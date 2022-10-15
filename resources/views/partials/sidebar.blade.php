@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
     <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">POS Apps</span>
+    <span class="brand-text font-weight-light">HRIS Apps</span>
   </a>
 
   <!-- Sidebar -->
@@ -11,7 +11,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="info">
-        <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+        <a href="#" class="d-block">{{ Str::headline(auth()->user()->role->name) }}</a>
       </div>
     </div>
 
@@ -49,22 +49,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ request()->is('rooms') ? 'active' : '' }}" class="nav-link">
-            <i class="nav-icon fas fa-bed"></i>
+          <a href="{{ url('departments') }}" class="nav-link {{ request()->is('departments*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-building"></i>
             <p>
-              Rooms 
+              Department 
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link {{ request()->is('menus') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-utensils"></i>
+          <a href="{{ url('positions') }}" class="nav-link {{ request()->is('positions*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-id-badge"></i>
             <p>
-              Menu 
+              Position
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="" class="nav-link {{ request()->is('restaurant*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-concierge-bell"></i>
             <p>
@@ -95,7 +95,7 @@
               Report 
             </p>
           </a>
-        </li>
+        </li> --}}
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

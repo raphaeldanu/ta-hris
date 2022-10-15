@@ -27,7 +27,7 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <a href="{{ url('users/create') }}" class="btn btn-primary">Create New User</a>
+              <a href="{{ url('departments/create') }}" class="btn btn-primary">Create New Department</a>
             </div>
 
             <div class="card-tools">
@@ -46,22 +46,20 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Username</th>
-                  <th>Role</th>
+                  <th>Departments Name</th>
                   <th class="col-2 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($users as $user)
+                @foreach ($departments as $department)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $user->username }}</td>
-                  <td>{{ Str::headline($user->role->name) }}</td>
+                  <td>{{ $department->name }}</td>
                   <td>
                     <div class="d-flex justify-content-around align-items-center">
-                      <a href="/users/{{ $user->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                      <a href="/users/{{ $user->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
-                      <form method="post" action="/users/{{ $user->id }}">
+                      <a href="/departments/{{ $department->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
+                      <a href="/departments/{{ $department->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                      <form method="post" action="/departments/{{ $department->id }}">
                           @csrf @method('delete')
                           <button type="submit" class="btn bg-danger"
                               onclick="return confirm('Apakah anda yakin untuk menghapusnya ?')"><i

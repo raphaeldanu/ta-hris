@@ -27,7 +27,7 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <a href="{{ url('users/create') }}" class="btn btn-primary">Create New User</a>
+              <a href="{{ url('positions/create') }}" class="btn btn-primary">Create New Position</a>
             </div>
 
             <div class="card-tools">
@@ -46,22 +46,22 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Username</th>
-                  <th>Role</th>
+                  <th>Position Name</th>
+                  <th>Department Name</th>
                   <th class="col-2 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($users as $user)
+                @foreach ($positions as $position)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $user->username }}</td>
-                  <td>{{ Str::headline($user->role->name) }}</td>
+                  <td>{{ $position->name }}</td>
+                  <td>{{ $position->department->name }}</td>
                   <td>
                     <div class="d-flex justify-content-around align-items-center">
-                      <a href="/users/{{ $user->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                      <a href="/users/{{ $user->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
-                      <form method="post" action="/users/{{ $user->id }}">
+                      <a href="/positions/{{ $position->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
+                      <a href="/positions/{{ $position->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                      <form method="post" action="/positions/{{ $position->id }}">
                           @csrf @method('delete')
                           <button type="submit" class="btn bg-danger"
                               onclick="return confirm('Apakah anda yakin untuk menghapusnya ?')"><i

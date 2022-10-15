@@ -35,13 +35,6 @@
           @method('put')
           <div class="card-body">
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Enter Name" name="name" value="{{ old('name', $user->name) }}">
-              @error('name') 
-              <div class="invalid-feedback">{{ $message }}</div>
-              @enderror
-            </div>
-            <div class="form-group">
               <label for="username">Username</label>
               <input type="text" class="form-control form-control-border border-width-2 @error('username') is-invalid @enderror" id="username" placeholder="Username" name="username" value="{{ old('username', $user->username) }}">
               @error('username') 
