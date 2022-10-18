@@ -10,7 +10,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url('levels') }}">Levels</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('position') }}">Position</a></li>
           <li class="breadcrumb-item active">{{ $title }}</li>
         </ol>
       </div><!-- /.col -->
@@ -25,29 +25,22 @@
     <!-- Small boxes (Stat box) -->
     <div class="col">
       <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Change Level</h3>
-        </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ url('levels/'.$level->id) }}" method="POST">
-          @csrf
-          @method('put')
-          <div class="card-body">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name', $level->name) }}">
-              @error('name') 
-              <div class="invalid-feedback">{{ $message }}</div>
-              @enderror
-            </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name', $department->name) }}" disabled>
+            @error('name') 
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
+        </div>
           <!-- /.card-body -->
 
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
+        <div class="card-footer">
+          <a href="{{ url('departments') }}" class="btn btn-primary">Go Back</a>
+        </div>
       </div>
     </div>
     <!-- /.row -->

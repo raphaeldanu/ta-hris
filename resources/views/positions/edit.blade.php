@@ -10,7 +10,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url('departments') }}">Users</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('positions') }}">Position</a></li>
           <li class="breadcrumb-item active">{{ $title }}</li>
         </ol>
       </div><!-- /.col -->
@@ -27,8 +27,9 @@
       <div class="card card-primary">
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ url('positions') }}" method="POST">
+        <form action="{{ url('positions/'.$position->id) }}" method="POST">
           @csrf
+          @method('put')
           <div class="card-body">
             <div class="form-group">
               <label for="name">Name</label>

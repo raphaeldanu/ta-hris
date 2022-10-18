@@ -27,7 +27,7 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <a href="{{ url('levels/create') }}" class="btn btn-primary">Create New Level</a>
+              <a href="{{ url('salary-ranges/create') }}" class="btn btn-primary">Create New Salary Range</a>
             </div>
 
             <div class="card-tools">
@@ -46,20 +46,22 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
+                  <th>Salary Range Name</th>
                   <th>Level Name</th>
                   <th class="col-2 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($levels as $level)
+                @foreach ($salaryRange as $salary_range)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $level->name }}</td>
+                  <td>{{ $salary_range->name }}</td>
+                  <td>{{ $salary_range->level->name }}</td>
                   <td>
                     <div class="d-flex justify-content-around align-items-center">
-                      <a href="/levels/{{ $level->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                      <a href="/levels/{{ $level->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
-                      <form method="post" action="/levels/{{ $level->id }}">
+                      <a href="/salary_ranges/{{ $salary_range->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
+                      <a href="/salary_ranges/{{ $salary_range->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                      <form method="post" action="/salary_ranges/{{ $salary_range->id }}">
                           @csrf @method('delete')
                           <button type="submit" class="btn bg-danger"
                               onclick="return confirm('Apakah anda yakin untuk menghapusnya ?')"><i

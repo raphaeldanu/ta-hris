@@ -31,7 +31,7 @@ class RoleController extends Controller
         
         return view('roles.index', [
             'title' => "Roles",
-            'roles' => Role::where('id', '!=', $request->user()->role_id)->without('permissions')->get(),
+            'roles' => Role::without('permissions')->get(),
         ]);
     }
 

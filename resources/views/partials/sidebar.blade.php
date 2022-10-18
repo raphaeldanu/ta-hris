@@ -76,6 +76,22 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ url('levels') }}" class="nav-link {{ request()->is('level*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-people-arrows"></i>
+            <p>
+              Employee Level
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('salary-ranges') }}" class="nav-link {{ request()->is('salary-ranges*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-money-bill-wave"></i>
+            <p>
+              Salary Range 
+            </p>
+          </a>
+        </li>
         {{-- <li class="nav-item">
           <a href="" class="nav-link {{ request()->is('restaurant*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-concierge-bell"></i>

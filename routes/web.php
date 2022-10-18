@@ -5,8 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SalaryRangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +42,7 @@ Route::resources([
     'roles' => RoleController::class,
     'departments' => DepartmentController::class,
     'positions' => PositionController::class,
+    'levels' => LevelController::class,
+    'salary-ranges' => SalaryRangeController::class,
+    
 ]);

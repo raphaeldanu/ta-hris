@@ -10,7 +10,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url('departments') }}">Departments</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('levels') }}">Levels</a></li>
           <li class="breadcrumb-item active">{{ $title }}</li>
         </ol>
       </div><!-- /.col -->
@@ -30,7 +30,7 @@
         <div class="card-body">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name', $department->name) }}" disabled>
+            <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name', $level->name) }}" disabled>
             @error('name') 
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
