@@ -40,6 +40,17 @@
             </p>
           </a>
         </li>
+        @can('viewAny', App\Models\Role::class)
+        <li class="nav-item">
+          <a href="{{ url('roles') }}" class="nav-link {{ request()->is('roles*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-users-cog"></i>
+            <p>
+              Roles
+            </p>
+          </a>
+        </li>
+        @endcan
+        @can('viewAny', App\Models\User::class)
         <li class="nav-item">
           <a href="{{ url('users') }}" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
@@ -48,6 +59,7 @@
             </p>
           </a>
         </li>
+        @endcan
         <li class="nav-item">
           <a href="{{ url('departments') }}" class="nav-link {{ request()->is('departments*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-building"></i>

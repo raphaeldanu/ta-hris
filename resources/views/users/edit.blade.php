@@ -42,15 +42,15 @@
               @enderror
             </div>
             <div class="form-group">
-              <label for="role">Role</label>
-              <select class="custom-select form-control-border border-width- @error('role') is-invalid @enderror" id="role" name="role">
-                <option value="{{ $user->role->value }}">{{ Str::headline($user->role->name) }}</option>
+              <label for="role_id">Role</label>
+              <select class="custom-select form-control-border border-width- @error('role_id') is-invalid @enderror" id="role_id" name="role_id">
+                <option value="{{ $user->role->id }}">{{ Str::headline($user->role->name) }}</option>
                 @foreach ($roles as $role)
-                <option @if (old('role') == $role->value) selected @endif value="{{ $role->value }}">{{ Str::headline($role->name) }}</option>
+                <option @if (old('role_id') == $role->id) selected @endif value="{{ $role->id }}">{{ Str::headline($role->name) }}</option>
                 @endforeach
               </select>
             </div>
-            @error('role') 
+            @error('role_id') 
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
           </div>
@@ -62,6 +62,7 @@
         </form>
       </div>
     </div>
+    @can('changePassword')  
     <div class="col">
       <div class="card card-primary">
         <div class="card-header">
@@ -93,6 +94,7 @@
         </form>
       </div>
     </div>
+    @endcan
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::put('/users/{user}/change-password', [UserController::class, 'changePassword']);
 Route::resources([
     'users' => UserController::class,
+    'roles' => RoleController::class,
     'departments' => DepartmentController::class,
     'positions' => PositionController::class,
 ]);
