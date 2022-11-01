@@ -54,7 +54,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {
-        return $user->role->permissions->contains('name', 'update_role');
+        return $user->role->permissions->contains('name', 'update_role') && $role->id != 1;
     }
 
     /**

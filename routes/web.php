@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
@@ -37,6 +38,11 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 Route::put('/users/{user}/change-password', [UserController::class, 'changePassword']);
+
+Route::get('/employees/pick-user', [EmployeeController::class, 'pickUser']);
+Route::get('/employees/create/{user}', [EmployeeController::class, 'create']);
+Route::resource('employees', EmployeeController::class)->except(['create']);
+
 Route::resources([
     'users' => UserController::class,
     'roles' => RoleController::class,
@@ -44,5 +50,4 @@ Route::resources([
     'positions' => PositionController::class,
     'levels' => LevelController::class,
     'salary-ranges' => SalaryRangeController::class,
-    
 ]);

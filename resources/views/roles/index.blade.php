@@ -58,7 +58,9 @@
                   <td>
                     <div class="d-flex justify-content-around align-items-center">
                       <a href="/roles/{{ $role->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
+                      @can('update', $role)
                       <a href="/roles/{{ $role->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                      @endcan
                       @can('delete', $role)
                       <form method="post" action="/roles/{{ $role->id }}">
                           @csrf @method('delete')

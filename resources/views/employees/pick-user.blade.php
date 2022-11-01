@@ -27,7 +27,7 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <a href="{{ url('salary-ranges/create') }}" class="btn btn-primary">Create New Salary Range</a>
+              <a href="{{ url('users/create') }}" class="btn btn-primary">Create New User</a>
             </div>
 
             <div class="card-tools">
@@ -46,27 +46,20 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Salary Range Name</th>
-                  <th>Level Name</th>
+                  <th>Username</th>
+                  <th>Role</th>
                   <th class="col-2 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($salaryRanges as $salary_range)
+                @foreach ($users as $user)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $salary_range->name }}</td>
-                  <td>{{ $salary_range->level->name }}</td>
+                  <td>{{ $user->username }}</td>
+                  <td>{{ Str::headline($user->role->name) }}</td>
                   <td>
                     <div class="d-flex justify-content-around align-items-center">
-                      <a href="/salary-ranges/{{ $salary_range->id }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                      <a href="/salary-ranges/{{ $salary_range->id }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
-                      <form method="post" action="/salary-ranges/{{ $salary_range->id }}">
-                          @csrf @method('delete')
-                          <button type="submit" class="btn bg-danger"
-                              onclick="return confirm('Apakah anda yakin untuk menghapusnya ?')"><i
-                                  class="fas fa-trash"></i></button>
-                      </form>
+                      <a href="/employees/create/{{ $user->id }}" class="btn bg-info"><i class="fas fa-plus"></i></a>
                   </div>
                   </td>
                 </tr>

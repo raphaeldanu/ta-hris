@@ -92,6 +92,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ url('employees') }}" class="nav-link {{ request()->is('employees*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Employees 
+            </p>
+          </a>
+        </li>
         {{-- <li class="nav-item">
           <a href="" class="nav-link {{ request()->is('restaurant*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-concierge-bell"></i>

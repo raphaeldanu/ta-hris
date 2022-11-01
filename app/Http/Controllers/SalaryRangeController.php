@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class SalaryRangeController extends Controller
 {
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,7 +27,7 @@ class SalaryRangeController extends Controller
     {
         return view('salary-ranges.index', [
             'title' => "Salary Range",
-            'salaryRanges' => SalaryRange::all(),
+            'salaryRanges' => SalaryRange::with(['level'])->get(),
         ]);
     }
 
@@ -45,7 +55,7 @@ class SalaryRangeController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'level_id' => 'required',
-            'base_salary' => 'required|decimal',
+            'base_salary' => 'required|integer',
         ]);
 
         SalaryRange::create($validated);

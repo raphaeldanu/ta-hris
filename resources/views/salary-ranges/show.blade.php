@@ -10,7 +10,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url('position') }}">Position</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('levels') }}">Levels</a></li>
           <li class="breadcrumb-item active">{{ $title }}</li>
         </ol>
       </div><!-- /.col -->
@@ -28,19 +28,33 @@
         <!-- /.card-header -->
         <!-- form start -->
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name', $department->name) }}" disabled>
-            @error('name') 
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Position Name" name="name" value="{{ old('name', $salaryRange->name) }}" disabled>
+              @error('name') 
+              <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label for="level">Levels</label>
+              <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="level" placeholder="Position Name" name="level" value="{{ old('name', $salaryRange->level->name) }}" disabled>
+            </div>
+            @error('level_id') 
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
+            <div class="form-group">
+              <label for="base_salary">Base Salary (Rp)</label>
+              <input type="number" class="form-control form-control-border border-width-2 @error('base_salary') is-invalid @enderror" id="base_salary" placeholder="Position Name" name="base_salary" value="{{ old('base_salary', $salaryRange->base_salary) }}">
+              @error('base_salary') 
+              <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
           </div>
-        </div>
           <!-- /.card-body -->
 
-        <div class="card-footer">
-          <a href="{{ url('departments') }}" class="btn btn-primary">Go Back</a>
-        </div>
+          <div class="card-footer">
+            <a href="{{ url('salary-ranges') }}" class="btn btn-primary">Kembali</a>
+          </div>
       </div>
     </div>
     <!-- /.row -->

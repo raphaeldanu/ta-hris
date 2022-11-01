@@ -10,7 +10,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ url('positions') }}">Position</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('levels') }}">Levels</a></li>
           <li class="breadcrumb-item active">{{ $title }}</li>
         </ol>
       </div><!-- /.col -->
@@ -27,28 +27,36 @@
       <div class="card card-primary">
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ url('positions') }}" method="POST">
+        <form action="{{ url('salary-ranges/'.$salaryRange->id) }}" method="POST">
           @csrf
+          @method('put')
           <div class="card-body">
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Position Name" name="name" value="{{ old('name') }}">
+              <input type="text" class="form-control form-control-border border-width-2 @error('name') is-invalid @enderror" id="name" placeholder="Position Name" name="name" value="{{ old('name', $salaryRange->name) }}">
               @error('name') 
               <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
             <div class="form-group">
-              <label for="department_id">Department</label>
-              <select class="custom-select form-control-border border-width- @error('department_id') is-invalid @enderror" id="department_id" name="department_id">
-                <option value="">Choose One</option>
-                @foreach ($departments as $department)
-                <option @if (old('department_id') == $department->id) selected @endif value="{{ $department->id }}">{{ Str::headline($department->name) }}</option>
+              <label for="level_id">Levels</label>
+              <select class="custom-select form-control-border border-width- @error('level_id') is-invalid @enderror" id="level_id" name="level_id">
+                <option value="{{ $salaryRange->level_id }}">{{ $salaryRange->level->name }}</option>
+                @foreach ($levels as $level)
+                <option @if (old('level_id') == $level->id) selected @endif value="{{ $level->id }}">{{ Str::headline($level->name) }}</option>
                 @endforeach
               </select>
             </div>
-            @error('department_id') 
+            @error('level_id') 
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
+            <div class="form-group">
+              <label for="base_salary">Base Salary (Rp)</label>
+              <input type="number" class="form-control form-control-border border-width-2 @error('base_salary') is-invalid @enderror" id="base_salary" placeholder="Position Name" name="base_salary" value="{{ old('base_salary', $level->base_salary) }}">
+              @error('base_salary') 
+              <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
           </div>
           <!-- /.card-body -->
 

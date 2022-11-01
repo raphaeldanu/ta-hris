@@ -34,7 +34,7 @@ class PositionController extends Controller
     public function create()
     {
         return view('positions.create', [
-            'title' => 'Position',
+            'title' => 'Create New Position',
             'departments' => Department::all(),
         ]);
     }
@@ -115,6 +115,6 @@ class PositionController extends Controller
     public function destroy(Position $position)
     {
         $position->delete();
-        return redirect('positions')->with('success', 'Position deleted successfully');
+        return redirectWithAlert('positions', 'success', 'Position deleted successfully');
     }
 }

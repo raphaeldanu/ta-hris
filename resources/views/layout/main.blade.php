@@ -110,5 +110,6 @@
   toastr.danger(Msg);
 </script>
 @endif
+@yield('user-script')
 </body>
 </html>
